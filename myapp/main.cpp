@@ -1,8 +1,8 @@
 #include "MyClass.hpp"
 #include <iostream>
 
-int
-main (int argc, const char **argv)
+auto
+main (int argc, const char **argv) -> int
 {
   MyClass myClass;
   std::cout << "Hello World! "
