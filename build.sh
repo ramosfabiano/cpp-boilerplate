@@ -1,6 +1,8 @@
 #!/bin/bash
 
 build_dir=./build
+install_dir=${PWD}/install
+
 
 # Ninja
 build_system="-G Ninja"
@@ -15,8 +17,9 @@ function build_configuration
    	BUILD_TYPE="$1"
 
     mkdir -p "$build_dir" && \
+    mkdir -p "$install_dir" && \
     pushd "$build_dir" > /dev/null && \
-    cmake -DCMAKE_BUILD_TYPE:STRING=$BUILD_TYPE "$build_system" .. && \
+    cmake -DCMAKE_BUILD_TYPE:STRING=$BUILD_TYPE "$build_system" -DCMAKE_INSTALL_PREFIX="$install_dir" .. && \
     "$build_command" -j4 && \
     popd > /dev/null
 
@@ -42,6 +45,7 @@ function run_command
 	case "$CMD" in
 		"Clean")
 			rm -rf "$build_dir"	
+			rm -rf "$install_dir"
 			;;   
 		"Test")
             run_tests

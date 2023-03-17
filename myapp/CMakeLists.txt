@@ -1,4 +1,6 @@
-add_executable(myapp main.cpp )
-target_link_libraries(myapp PUBLIC ${MYLIB_LIBRARY_NAME} pthread)
-set_target_properties(myapp PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
+set(MYAPP_EXECUTABLE_NAME myapp)
+
+add_executable(${MYAPP_EXECUTABLE_NAME} main.cpp )
+target_link_libraries(${MYAPP_EXECUTABLE_NAME} PUBLIC ${MYLIB_LIBRARY_NAME} pthread)
+set_target_properties(${MYAPP_EXECUTABLE_NAME} PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
 
