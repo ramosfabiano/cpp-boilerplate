@@ -3,8 +3,8 @@
 
 mkdir -p build && \
 pushd build && \
-cmake -DCMAKE_BUILD_TYPE=Release .. && \
-make -j4 && \
+cmake -DCMAKE_BUILD_TYPE:STRING=Release -G Ninja .. && \
+ninja -v -j4 && \
 popd
 
 
