@@ -3,34 +3,35 @@
 build_dir=./build
 
 # Ninja
-#build_system="-G Ninja"
-#build_command="ninja"
+build_system="-G Ninja"
+build_command="ninja"
 
 # Makefiles
-build_system="-G Unix Makefiles"
-build_command="make"
+#build_system="-G Unix Makefiles"
+#build_command="make"
 
 function build_configuration
 {
    	BUILD_TYPE="$1"
 
     mkdir -p "$build_dir" && \
-    pushd "$build_dir" && \
+    pushd "$build_dir" > /dev/null && \
     cmake -DCMAKE_BUILD_TYPE:STRING=$BUILD_TYPE "$build_system" .. && \
     "$build_command" -j4 && \
-    popd
+    popd > /dev/null
 
 }
 
 function run_tests
 {
-    test_binary="$build_dir"/test
-    if [ -f "$test_binary" ]
+    test_directory="$build_dir/test"
+    if [ -d "$test_directory" ]
     then
-        echo -e "Running tests..."
-        $test_binary
+		pushd $test_directory > /dev/null
+        ctest --output-on-failure
+		popd  > /dev/null
     else
-        echo -e "Test binary not found. Please build first."
+        echo -e "Test directory not found. Please build first."
     fi
 }
 

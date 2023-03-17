@@ -60,8 +60,14 @@ The following command cleans the build folder, runs a Release build, and finally
 
 ## Running the Tests
 
-The testing executable is also placed in the `build` directory. From within `build`, you can run the unit tests as follows:
-```
-./test
-```
+In order to run the tests:
 
+```
+cd build/tests
+ctest --output-on-failure
+```
+Or,  using the helper script:
+
+```
+./build.sh Test
+```

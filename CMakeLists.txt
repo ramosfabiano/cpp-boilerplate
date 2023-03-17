@@ -9,14 +9,6 @@ project(cpp-boilerplate VERSION "0.0.1" LANGUAGES CXX)
 # CPM
 include(cmake/CPM.cmake)
 
-# googletest  (external dependency managed by CPM)
-CPMAddPackage(
-  NAME GoogleTest
-  VERSION 1.13.0
-  GITHUB_REPOSITORY "google/googletest"
-  GIT_TAG "v1.13.0"
-)
-
 # boost  (system's)
 find_package(Boost REQUIRED)
 
@@ -34,10 +26,8 @@ set_target_properties (mylib PROPERTIES SOVERSION ${PROJECT_VERSION})
 set_target_properties(mylib PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
 
 # app
-add_executable(app src/main.cpp )
-target_link_libraries(app PUBLIC mylib pthread)
+add_executable(myapp src/main.cpp )
+target_link_libraries(myapp PUBLIC mylib pthread)
 
-# test
-add_executable(test test/MyClassTest.cpp)
-target_link_libraries(test mylib gtest_main pthread) #gmock_main
-
+# tests
+add_subdirectory(test)
