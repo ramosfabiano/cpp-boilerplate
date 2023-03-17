@@ -43,7 +43,7 @@ make
 ```
 The executable will be placed in the `build` directory.
 
-## Testing
+## Running the Tests
 
 The testing executable is also placed in the `build` directory. From within `build`, you can run the unit tests as follows:
 ```
