@@ -2,6 +2,8 @@
 # boost (from system)
 find_package(Boost REQUIRED)
 
+set (MYLIB_LIBRARY_NAME mylib)
+
 add_library(${MYLIB_LIBRARY_NAME} SHARED src/MyClass.cpp)
 target_include_directories(${MYLIB_LIBRARY_NAME} PUBLIC include)
 target_link_libraries(${MYLIB_LIBRARY_NAME} PUBLIC boost_filesystem)

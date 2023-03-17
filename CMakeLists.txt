@@ -14,7 +14,6 @@ find_program(CLANG_TIDY_EXE NAMES "clang-tidy" REQUIRED)
 set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}" "-checks=-*,modernize-*")
 
 # lib
-set (MYLIB_LIBRARY_NAME mylib)
 add_subdirectory(mylib)
 
 # app
