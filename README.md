@@ -1,2 +1,50 @@
-# cpp-boilerplate
-Boilerplate for C++ projects  (Linux)
+# CPP boilerplate
+
+This repository contains a boilerplate for a c++ project.
+
+## Dependencies for Running Locally
+
+* cmake 
+* make  
+* gcc/g++ 
+* clang (for clang-tidy & cland-format)
+* Boost
+
+## Setup
+
+This project depents on CMake-CPM module, under cmake/CPM.cmake (https://github.com/cpm-cmake/CPM.cmake). 
+
+In order to update this component, run:
+
+```
+mkdir -p cmake
+wget -O cmake/CPM.cmake https://github.com/cpm-cmake/CPM.cmake/releases/latest/download/CPM.cmake
+```
+
+Alternatively, CPM provides a 'proxy' CPM.cmake that checks and updates the CPM.cmake version on every build. In order to use this proxy, run this instead:
+
+```
+mkdir -p cmake
+wget -O cmake/CPM.cmake https://github.com/cpm-cmake/CPM.cmake/releases/latest/download/get_cpm.cmake
+```
+
+## Compiling
+
+To compile the project, first, create a `build` directory and change to that directory:
+```
+mkdir build && cd build
+```
+From within the `build` directory, then run `cmake` and `make` as follows:
+```
+cmake ..
+make
+```
+The executable will be placed in the `build` directory.
+
+## Testing
+
+The testing executable is also placed in the `build` directory. From within `build`, you can run the unit tests as follows:
+```
+./test
+```
+
