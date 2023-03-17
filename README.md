@@ -7,7 +7,7 @@ It uses CMake, googletest and clang-tidy.
 ## Dependencies 
 
 * cmake 
-* make or ninja
+* make
 * gcc/g++ 
 * clang (for clang-tidy & clang-format)
 * Boost
@@ -36,10 +36,10 @@ To compile the project, first, create a `build` directory and change to that dir
 ```
 mkdir build && cd build
 ```
-From within the `build` directory, then run `cmake` and `ninja` as follows:
+From within the `build` directory, then run `cmake` and `make` as follows:
 ```
 cmake ..
-ninja
+make
 ```
 The executable will be placed in the `build` directory.
 
