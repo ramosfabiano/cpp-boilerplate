@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../src/MyClass.hpp"
+#include "MyClass.hpp"
 
 
 class MyClassTest : public ::testing::Test {

@@ -30,20 +30,28 @@ mkdir -p cmake
 wget -O cmake/CPM.cmake https://github.com/cpm-cmake/CPM.cmake/releases/latest/download/get_cpm.cmake
 ```
 
-## Compiling (manually)
+## Compiling / Testing (manually)
 
 To compile the project, first, create a `build` directory and change to that directory:
 ```
 mkdir build && cd build
 ```
+
 From within the `build` directory, then run `cmake` and `make` as follows:
 ```
 cmake ..
 make
 ```
-The executable will be placed in the `build` directory.
 
-## Compiling (via helper script)
+Then, in order to run the tests, from within the `build` directory:
+
+```
+cd tests
+ctest --output-on-failure
+```
+
+
+## Compiling / Testing (via helper script)
 
 To compile the project, run the `build.sh` script:
 
@@ -58,16 +66,4 @@ The following command cleans the build folder, runs a Release build, and finally
 ./build.sh Clean Release Test
 ```
 
-## Running the Tests
 
-In order to run the tests:
-
-```
-cd build/tests
-ctest --output-on-failure
-```
-Or,  using the helper script:
-
-```
-./build.sh Test
-```
