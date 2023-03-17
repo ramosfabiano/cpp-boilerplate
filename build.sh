@@ -34,7 +34,6 @@ function run_tests
     fi
 }
 
-
 function run_command 
 {
 	CMD="$1"
