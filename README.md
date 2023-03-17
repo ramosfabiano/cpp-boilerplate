@@ -9,7 +9,7 @@ It uses CMake, googletest and clang-tidy.
 * cmake 
 * make
 * gcc/g++ 
-* clang (for clang-tidy & clang-format)
+* clang-tidy
 * Boost
 
 ## Setup
