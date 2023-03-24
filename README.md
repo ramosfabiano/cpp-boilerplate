@@ -1,4 +1,4 @@
-# CPP boilerplate
+# C++ boilerplate
 
 This repository contains a simple boilerplate for C++ projects (under Linux).
 
