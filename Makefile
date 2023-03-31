@@ -41,7 +41,8 @@ test:
 
 .PHONY: format
 format:
-	clang-format -style=gnu -i myapp/*.?pp
+	clang-format -style=gnu -i myapp/src/*.?pp
+	clang-format -style=gnu -i myapp/include/*.?pp
 	clang-format -style=gnu -i mylib/src/*.?pp
 	clang-format -style=gnu -i mylib/include/*.?pp
 	clang-format -style=gnu -i test/*.?pp
