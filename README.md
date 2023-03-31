@@ -1,6 +1,6 @@
 # C++ boilerplate
 
-This repository contains a boilerplate for C++ projects (under Linux).
+A boilerplate for C++ projects (under Linux).
 
 ## Dependencies 
 
