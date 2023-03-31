@@ -21,7 +21,7 @@ To build the project:
 make all
 ```
 
-The code will automatically be formatted by `clang-format` before building.
+The source files will automatically be formatted by `clang-format` before building.
 
 Alternativelly, a debug build can be triggered using:
 

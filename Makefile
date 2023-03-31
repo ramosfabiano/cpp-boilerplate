@@ -10,7 +10,7 @@ build_threads=4
 
 
 .PHONY: all
-all:
+all: format
 	mkdir -p ${build_dir}
 	mkdir -p ${install_dir}
 	cd ${build_dir} && \
@@ -19,7 +19,7 @@ all:
 
 
 .PHONY: debug
-debug:
+debug: format
 	mkdir -p ${build_dir}
 	mkdir -p ${install_dir}
 	cd ${build_dir} && \
