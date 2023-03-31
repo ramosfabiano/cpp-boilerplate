@@ -2,8 +2,6 @@
 
 This repository contains a simple boilerplate for C++ projects (under Linux).
 
-It uses CMake, googletest, clang-format and clang-tidy.
-
 ## Dependencies 
 
 * make
