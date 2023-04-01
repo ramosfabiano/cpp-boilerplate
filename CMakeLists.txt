@@ -11,7 +11,7 @@ include(cmake/CPM.cmake)
 
 # clang-tidy
 find_program(CLANG_TIDY_EXE NAMES "clang-tidy" REQUIRED)
-set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}" "-checks=-*,modernize-*")
+set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}" "-checks=-*,cppcoreguidelines-*,modernize-*")
 
 # lib
 add_subdirectory(mylib)
