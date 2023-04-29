@@ -18,6 +18,13 @@ all:
 	${build_command} -j${build_threads} install
 
 
+.PHONY: format
+format:
+	find myapp/ -name  *.?pp | xargs astyle -n --style=allman --add-braces --convert-tabs --indent-cases --pad-oper
+	find mylib/ -name  *.?pp | xargs astyle -n --style=allman --add-braces --convert-tabs --indent-cases --pad-oper
+	find test/ -name  *.?pp  | xargs astyle -n --style=allman --add-braces --convert-tabs --indent-cases --pad-oper
+
+
 .PHONY: debug
 debug:
 	mkdir -p ${build_dir}
@@ -37,15 +44,6 @@ clean:
 test:
 	cd ${build_dir}/test && \
 	ctest --output-on-failure
-
-
-.PHONY: format
-format:
-	clang-format -style=gnu -i myapp/src/*.?pp
-	clang-format -style=gnu -i myapp/include/*.?pp
-	clang-format -style=gnu -i mylib/src/*.?pp
-	clang-format -style=gnu -i mylib/include/*.?pp
-	clang-format -style=gnu -i test/*.?pp
 
 
 .PHONY: cpm
