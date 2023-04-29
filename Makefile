@@ -15,7 +15,7 @@ all:
 	mkdir -p ${install_dir}
 	cd ${build_dir} && \
 	cmake -DCMAKE_BUILD_TYPE:STRING=Release -G ${build_system} -DCMAKE_INSTALL_PREFIX=${install_dir} .. && \
-	${build_command} -j${build_threads}
+	${build_command} -j${build_threads} install
 
 
 .PHONY: debug
@@ -24,7 +24,7 @@ debug:
 	mkdir -p ${install_dir}
 	cd ${build_dir} && \
 	cmake -DCMAKE_BUILD_TYPE:STRING=Debug -G ${build_system} -DCMAKE_INSTALL_PREFIX=${install_dir} .. && \
-	${build_command} -j${build_threads}
+	${build_command} -j${build_threads} install
 
 
 .PHONY: clean
