@@ -41,9 +41,20 @@ clean:
 
 
 .PHONY: test
-test:
+test: 
+	mkdir -p ${build_dir}
+	mkdir -p ${install_dir}
+	cd ${build_dir} && \
+	cmake -DCMAKE_BUILD_TYPE:STRING=Debug -G ${build_system} -DCMAKE_INSTALL_PREFIX=${install_dir} .. && \
+	${build_command} -j${build_threads} install && \
 	cd ${build_dir}/test && \
-	ctest --output-on-failure
+	ctest --output-on-failure && \
+	cd ${build_dir} && \
+	mkdir -p coverage_report && \
+	lcov --capture --directory . --output-file coverage.info_ && \
+	lcov --remove coverage.info_ '*google*' '/usr*' --output-file coverage.info > /dev/null && \
+	genhtml coverage.info --output-directory coverage_report && \
+	echo "Please run 'firefox-esr build/coverage_report/index.html' for full coverage report."
 
 
 .PHONY: cpm
