@@ -1,6 +1,6 @@
 # C++ boilerplate
 
-A boilerplate for C++ projects (under Linux).
+A boilerplate for C++ projects (Linux).
 
 ## Dependencies 
 
