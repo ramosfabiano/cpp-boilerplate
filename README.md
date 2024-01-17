@@ -1,4 +1,4 @@
-# C++ boilerplate
+# C++ boilerplate 
 
 A boilerplate for C++ projects (Linux).
 
