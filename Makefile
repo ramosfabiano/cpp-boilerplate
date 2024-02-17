@@ -6,7 +6,7 @@ install_dir=${PWD}/install
 build_system="Unix Makefiles"
 build_command="make"
 
-build_threads=4
+build_threads=2
 
 
 .PHONY: all
@@ -54,10 +54,10 @@ test:
 	lcov --capture --directory . --output-file coverage.info_ && \
 	lcov --remove coverage.info_ '*google*' '/usr*' --output-file coverage.info > /dev/null && \
 	genhtml coverage.info --output-directory coverage_report && \
-	echo "Please run 'firefox-esr build/coverage_report/index.html' for full coverage report."
+	echo "Please run 'firefox build/coverage_report/index.html' for full coverage report."
 
 
-.PHONY: cpm
-cpm:
+.PHONY: update-cpm
+update-cpm:
 	mkdir -p cmake && \
 	wget https://github.com/cpm-cmake/CPM.cmake/releases/latest/download/CPM.cmake -O cmake/CPM.cmake 
