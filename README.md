@@ -7,7 +7,7 @@ A boilerplate for C++ projects (Linux).
 * make
 * cmake 
 * gcc/g++ 
-* astyle
+* clang-format
 * clang-tidy
 * boost
 * googletest (handled by [CMake-CPM](https://github.com/cpm-cmake/CPM.cmake))

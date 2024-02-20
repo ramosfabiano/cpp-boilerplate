@@ -20,10 +20,9 @@ all:
 
 .PHONY: format
 format:
-	find myapp/ -name  *.?pp | xargs astyle -n --style=allman --add-braces --convert-tabs --indent-cases --pad-oper
-	find mylib/ -name  *.?pp | xargs astyle -n --style=allman --add-braces --convert-tabs --indent-cases --pad-oper
-	find test/ -name  *.?pp  | xargs astyle -n --style=allman --add-braces --convert-tabs --indent-cases --pad-oper
-
+	find myapp/ -name  *.?pp  -exec clang-format -i --style="{BasedOnStyle: google, IndentWidth: 4, TabWidth: 4, ColumnLimit: 150}" {} \;
+	find mylib/ -name  *.?pp  -exec clang-format -i --style="{BasedOnStyle: google, IndentWidth: 4, TabWidth: 4, ColumnLimit: 150}" {} \;
+	find test/ -name  *.?pp  -exec clang-format -i --style="{BasedOnStyle: google, IndentWidth: 4, TabWidth: 4, ColumnLimit: 150}" {} \;
 
 .PHONY: debug
 debug:
