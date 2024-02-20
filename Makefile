@@ -18,12 +18,6 @@ all:
 	${build_command} -j${build_threads} install
 
 
-.PHONY: format
-format:
-	find myapp/ -name  *.?pp  -exec clang-format -i --style="{BasedOnStyle: google, IndentWidth: 4, TabWidth: 4, ColumnLimit: 150}" {} \;
-	find mylib/ -name  *.?pp  -exec clang-format -i --style="{BasedOnStyle: google, IndentWidth: 4, TabWidth: 4, ColumnLimit: 150}" {} \;
-	find test/ -name  *.?pp  -exec clang-format -i --style="{BasedOnStyle: google, IndentWidth: 4, TabWidth: 4, ColumnLimit: 150}" {} \;
-
 .PHONY: debug
 debug:
 	mkdir -p ${build_dir}
@@ -44,7 +38,7 @@ test:
 	mkdir -p ${build_dir}
 	mkdir -p ${install_dir}
 	cd ${build_dir} && \
-	cmake -DCMAKE_BUILD_TYPE:STRING=Debug -G ${build_system} -DCMAKE_INSTALL_PREFIX=${install_dir} .. && \
+	cmake  -DCOVERAGE=ON -DCMAKE_BUILD_TYPE:STRING=Release -G ${build_system} -DCMAKE_INSTALL_PREFIX=${install_dir} .. && \
 	${build_command} -j${build_threads} install && \
 	cd ${build_dir}/test && \
 	ctest --output-on-failure && \
@@ -56,6 +50,12 @@ test:
 	echo "Please run 'firefox build/coverage_report/index.html' for full coverage report."
 
 
+.PHONY: format
+format:
+	find myapp/ -name  *.?pp  -exec clang-format -i --style="{BasedOnStyle: google, IndentWidth: 4, TabWidth: 4, ColumnLimit: 150}" {} \;
+	find mylib/ -name  *.?pp  -exec clang-format -i --style="{BasedOnStyle: google, IndentWidth: 4, TabWidth: 4, ColumnLimit: 150}" {} \;
+	find test/ -name  *.?pp  -exec clang-format -i --style="{BasedOnStyle: google, IndentWidth: 4, TabWidth: 4, ColumnLimit: 150}" {} \;
+	
 .PHONY: update-cpm
 update-cpm:
 	mkdir -p cmake && \

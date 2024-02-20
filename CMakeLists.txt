@@ -14,8 +14,10 @@ find_program(CLANG_TIDY_EXE NAMES "clang-tidy" REQUIRED)
 set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}" "-checks=-*,cppcoreguidelines-*,modernize-*")
 
 # code coverage options
-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -fprofile-arcs -ftest-coverage")
+option(COVERAGE "Enable coverage reporting" OFF)
+if(COVERAGE)
+	add_compile_options(--coverage)
+	add_link_options(--coverage)
 endif()
 
 # lib
