@@ -1,0 +1,14 @@
+{
+  "name": "C++ DevContainer (Debian Bookworm)",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "settings": {},
+  "extensions": [
+    "ms-vscode.cpptools",
+    "ms-vscode.cmake-tools"
+  ],
+  "features": {},
+  "remoteUser": "vscode"
+}
+
