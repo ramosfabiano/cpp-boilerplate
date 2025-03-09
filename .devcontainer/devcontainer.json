@@ -5,7 +5,8 @@
   },
   "settings": {},
   "extensions": [
-    "ms-vscode.cpptools"
+    "ms-vscode.cpptools",
+    "ms-vscode.cpptools-extension-pack",
   ],
   "features": {},
   "remoteUser": "vscode"
