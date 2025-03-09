@@ -5,9 +5,12 @@
   },
   "settings": {},
   "extensions": [
-    "ms-vscode.cpptools",
-    "ms-vscode.cmake-tools"
+    "ms-vscode.cpptools"
   ],
+  "mounts": [
+    "source=${env:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,readonly",
+    "source=${env:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,readonly"
+  ]
   "features": {},
   "remoteUser": "vscode"
 }
