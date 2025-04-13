@@ -8,9 +8,10 @@ build_command="make"
 
 build_threads=2
 
+.PHONY: *
+.ONE_SHELL:
 
-.PHONY: all
-all:
+build:
 	mkdir -p ${build_dir}
 	mkdir -p ${install_dir}
 	cd ${build_dir} && \
@@ -18,28 +19,16 @@ all:
 	${build_command} -j${build_threads} install
 
 
-.PHONY: debug
-debug:
-	mkdir -p ${build_dir}
-	mkdir -p ${install_dir}
-	cd ${build_dir} && \
-	cmake -DCMAKE_BUILD_TYPE:STRING=Debug -G ${build_system} -DCMAKE_INSTALL_PREFIX=${install_dir} .. && \
-	${build_command} -j${build_threads} install
+run: build
+	LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./install/lib/ ./install/bin/myapp
 
 
-.PHONY: clean
 clean:
 	rm -rf ${build_dir}
 	rm -rf ${install_dir}
 
 
-.PHONY: test
-test: 
-	mkdir -p ${build_dir}
-	mkdir -p ${install_dir}
-	cd ${build_dir} && \
-	cmake  -DCOVERAGE=ON -DCMAKE_BUILD_TYPE:STRING=Release -G ${build_system} -DCMAKE_INSTALL_PREFIX=${install_dir} .. && \
-	${build_command} -j${build_threads} install && \
+test: build
 	cd ${build_dir}/test && \
 	ctest --output-on-failure && \
 	cd ${build_dir} && \
@@ -47,16 +36,14 @@ test:
 	lcov --capture --directory . --output-file coverage.info_ && \
 	lcov --remove coverage.info_ '*google*' '/usr*' --output-file coverage.info > /dev/null && \
 	genhtml coverage.info --output-directory coverage_report && \
-	echo "Please run 'firefox build/coverage_report/index.html' for full coverage report."
+	echo "Please check 'build/coverage_report/index.html' for full coverage report."
 
 
-.PHONY: format
 format:
 	find myapp/ -name  *.?pp  -exec clang-format -i --style="{BasedOnStyle: google, IndentWidth: 4, TabWidth: 4, ColumnLimit: 150}" {} \;
 	find mylib/ -name  *.?pp  -exec clang-format -i --style="{BasedOnStyle: google, IndentWidth: 4, TabWidth: 4, ColumnLimit: 150}" {} \;
 	find test/ -name  *.?pp  -exec clang-format -i --style="{BasedOnStyle: google, IndentWidth: 4, TabWidth: 4, ColumnLimit: 150}" {} \;
 	
-.PHONY: update-cpm
 update-cpm:
 	mkdir -p cmake && \
 	wget https://github.com/cpm-cmake/CPM.cmake/releases/latest/download/CPM.cmake -O cmake/CPM.cmake 
