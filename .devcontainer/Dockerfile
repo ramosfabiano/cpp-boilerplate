@@ -1,7 +1,7 @@
 FROM debian:bookworm
 
 RUN apt update
-RUN apt install -y build-essential cmake clang clang-tidy clang-format libboost-all-dev lcov git wget 
+RUN apt install -y build-essential ninja-build cmake clang clang-tidy clang-format libboost-all-dev lcov git wget 
 
 ARG USERNAME=vscode
 ARG USER_UID=1000

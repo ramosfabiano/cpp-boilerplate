@@ -6,6 +6,8 @@
   "settings": {},
   "extensions": [
     "ms-vscode.cpptools",
+    "ms-vscode.cmake",
+    "ms-vscode.makefile-tools",
     "ms-vscode.cpptools-extension-pack",
   ],
   "features": {},

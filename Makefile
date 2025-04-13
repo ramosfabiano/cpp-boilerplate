@@ -1,12 +1,12 @@
 build_dir=${PWD}/build
 install_dir=${PWD}/install
 
-#build_system="Ninja"
-#build_command="ninja"
-build_system="Unix Makefiles"
-build_command="make"
+build_system="Ninja"
+build_command="ninja"
+#build_system="Unix Makefiles"
+#build_command="make"
 
-build_threads=2
+build_threads=$(shell nproc)
 
 .PHONY: *
 .ONE_SHELL:
