@@ -18,6 +18,12 @@ build:
 	cmake -DCMAKE_BUILD_TYPE:STRING=Release -G ${build_system} -DCMAKE_INSTALL_PREFIX=${install_dir} .. && \
 	${build_command} -j${build_threads} install
 
+build_debug:
+	mkdir -p ${build_dir}
+	mkdir -p ${install_dir}
+	cd ${build_dir} && \
+	cmake -DCMAKE_BUILD_TYPE:STRING=Debug -G ${build_system} -DCMAKE_INSTALL_PREFIX=${install_dir} .. && \
+	${build_command} -j${build_threads} install
 
 run: build
 	LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./install/lib/ ./install/bin/myapp
@@ -28,7 +34,7 @@ clean:
 	rm -rf ${install_dir}
 
 
-test: build
+test: clean build_debug
 	cd ${build_dir}/test && \
 	ctest --output-on-failure && \
 	cd ${build_dir} && \

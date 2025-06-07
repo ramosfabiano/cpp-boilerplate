@@ -14,7 +14,7 @@ find_program(CLANG_TIDY_EXE NAMES "clang-tidy" REQUIRED)
 set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}" "-checks=-*,cppcoreguidelines-*,modernize-*")
 
 # code coverage options
-option(COVERAGE "Enable coverage reporting" OFF)
+option(COVERAGE "Enable coverage reporting" ON)
 if(COVERAGE)
 	add_compile_options(--coverage)
 	add_link_options(--coverage)
