@@ -36,13 +36,7 @@ clean:
 
 test: clean build_debug
 	cd ${build_dir}/test && \
-	ctest --output-on-failure && \
-	cd ${build_dir} && \
-	mkdir -p coverage_report && \
-	lcov --capture --directory . --output-file coverage.info_ && \
-	lcov --remove coverage.info_ '*google*' '/usr*' --output-file coverage.info > /dev/null && \
-	genhtml coverage.info --output-directory coverage_report && \
-	echo "Please check 'build/coverage_report/index.html' for full coverage report."
+	ctest --output-on-failure
 
 
 format:

@@ -1,5 +1,5 @@
 {
-  "name": "C++ DevContainer (Debian Bookworm)",
+  "name": "C++ Boilerplate",
   "build": {
     "dockerfile": "Dockerfile"
   },

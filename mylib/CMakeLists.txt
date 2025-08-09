@@ -1,7 +1,3 @@
-
-# boost (from system)
-find_package(Boost REQUIRED)
-
 set (MYLIB_LIBRARY_NAME mylib)
 
 add_library(${MYLIB_LIBRARY_NAME} SHARED src/MyClass.cpp)
